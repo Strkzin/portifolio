@@ -3,7 +3,7 @@ exports.handler = async function(context, event, callback) {
     sg.setApiKey(context.SENDGRID_API_KEY);
     const msg = {
       to: context.TO_EMAIL_ADDRESS,
-      from: { email: context.FROM_EMAIL_ADDRESS, name: "Your contact form" },
+      from: { email: context.FROM_EMAIL_ADDRESS, name: "/send-email" },
       replyTo: event.from,
       subject: `[contactform] ${event.subject}`,
       text: `New email from ${event.from}.\n\n${event.content}`,
@@ -26,4 +26,3 @@ exports.handler = async function(context, event, callback) {
       return callback(null, errorResponse(response, message));
     }
   }
-  
